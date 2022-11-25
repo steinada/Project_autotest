@@ -1,10 +1,8 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
-import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-
 
 class ProductPage(BasePage):
     def should_not_be_success_message(self):
@@ -16,7 +14,6 @@ class ProductPage(BasePage):
         button_add_product = self.browser.find_element(*ProductPageLocators.ADD_TO_BACKET)
         button_add_product.click()
         self.solve_quiz_and_get_code()
-        time.sleep(3)
 
     def should_be_success_message(self):
         assert self.is_element_present(*ProductPageLocators.SUCCESS_ADDED), "Success massage is not on page"
