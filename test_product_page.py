@@ -30,6 +30,7 @@ class TestUserAddToBasketFromProductPage():
         page.register_new_user(user_email, user_password)
         page.browser.find_element(*MainPageLocators.USER_ICON)
 
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
         page = ProductPage(browser, link)
@@ -46,7 +47,7 @@ class TestUserAddToBasketFromProductPage():
 
 @pytest.mark.need_review
 @pytest.mark.parametrize('url', bug_hunt_links)
-def test_user_can_add_product_to_basket(browser, url):
+def test_guest_can_add_product_to_basket(browser, url):
     link = url
     page = ProductPage(browser, link)
     page.add_to_basket(link)
